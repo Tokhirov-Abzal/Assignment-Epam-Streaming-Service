@@ -3,18 +3,31 @@ import "../index.scss";
 
 // Context
 import ShowsContext from "../context/shows/showsContext";
+// import AlertsContext from "../context/alerts/alertsContext";
 // Components
 import Alert from "./Alert";
 
 function Searchbar() {
   const [searchVal, setSearchVal] = useState("");
-  const { searchShows } = useContext(ShowsContext);
+  const [alert, setAlert] = useState("");
+
+  const showsContext = useContext(ShowsContext);
+  const { searchShows } = showsContext;
+
+  // const { alert, setAlert } = useContext(AlertsContext);
 
   const onSearchHandler = (e) => {
     e.preventDefault();
 
-    searchShows(searchVal);
-    setSearchVal("");
+    if (searchVal === "") {
+      setAlert("Please enter something");
+      setTimeout(() => {
+        setAlert("");
+      }, 3000);
+    } else {
+      searchShows(searchVal);
+      setSearchVal("");
+    }
   };
   return (
     <div className="inputContainer">
@@ -33,7 +46,7 @@ function Searchbar() {
           Go
         </button>
       </form>
-      <Alert message="Please, enter something" type="danger" />
+      {alert ? <Alert message={alert} /> : null}
     </div>
   );
 }

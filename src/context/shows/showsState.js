@@ -7,6 +7,7 @@ import {
   SET_LOADING,
   SET_SINGLE_SHOW,
   CLEAR_SINGLE_SHOW,
+  SET_FAVOURITE,
 } from "../types";
 
 const ShowsState = (props) => {
@@ -14,6 +15,7 @@ const ShowsState = (props) => {
     shows: [],
     singleShow: {},
     loading: false,
+    favourite: false,
   };
 
   const [state, dispatch] = useReducer(ShowsReducer, initialState);
@@ -31,6 +33,26 @@ const ShowsState = (props) => {
     });
   };
 
+  const getSingleShow = async (id) => {
+    dispatch({ type: SET_LOADING });
+
+    const { data } = await axios.get(
+      `https://api.tvmaze.com/search/shows/${id}`
+    );
+
+    console.log(data);
+    dispatch({
+      type: SET_SINGLE_SHOW,
+      payload: data,
+    });
+  };
+
+  const clearSingleShow = () => {
+    dispatch({
+      type: CLEAR_SINGLE_SHOW,
+    });
+  };
+
   return (
     <ShowsContext.Provider
       value={{
@@ -38,6 +60,9 @@ const ShowsState = (props) => {
         singleShow: state.singleShow,
         loading: state.loading,
         searchShows,
+        getSingleShow,
+        clearSingleShow,
+        favourite: state.favourite,
       }}
     >
       {props.children}

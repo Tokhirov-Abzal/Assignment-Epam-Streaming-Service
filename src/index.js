@@ -5,6 +5,7 @@ import App from "./App";
 
 // State
 import ShowsState from "./context/shows/showsState";
+// import AlertsState from "./context/alerts/AlertsState";
 
 ReactDOM.render(
   <ShowsState>

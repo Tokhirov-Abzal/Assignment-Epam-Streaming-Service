@@ -6,7 +6,7 @@ import Navbar from "./Components/Navbar";
 // Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import SinglePage from "./pages/Singlepage";
+import Bookmark from "./pages/Bookmark";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/singleshow/:id" component={SinglePage} />
+          <Route path="/bookmark" component={Bookmark} />
         </Switch>
       </div>
     </Router>

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // Components
 import Searchbar from "../Components/Searchbar";
@@ -10,13 +10,19 @@ import "./Home.scss";
 
 const Home = () => {
   const showsContext = useContext(ShowsContext);
-  const { loading, shows } = showsContext;
+  const { loading, shows, favourite, getFavourite } = showsContext;
+
   console.log(shows);
   return (
     <div>
       <Searchbar />
       {loading ? (
-        <h2>Loading...</h2>
+        <div style={{ textAlign: "center", marginTop: "100px" }}>
+          <i
+            className="fas fa-spinner"
+            style={{ color: "white", textAlign: "center", fontSize: "200px" }}
+          ></i>
+        </div>
       ) : (
         <div className="contentContainer">
           {shows.map((item) => (
@@ -34,6 +40,8 @@ const Home = () => {
                   : "no rating"
               }
               id={item.show.id}
+              info={item.show.officialSite}
+              favourite={favourite}
             />
           ))}
         </div>

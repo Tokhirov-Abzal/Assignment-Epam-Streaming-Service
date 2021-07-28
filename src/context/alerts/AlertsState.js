@@ -3,12 +3,37 @@ import AlertsContext from "./alertsContext";
 import AlertsReducer from "./alertsReducer";
 import { SET_ALERT, REMOVE_ALERT } from "../types";
 
-// const AlertsState = (props) => {
-//   const initialState = null;
+const AlertsState = (props) => {
+  const initialState = null;
 
-//   const [] = useReducer(AlertsReducer, initialState);
+  const [state, dispatch] = useReducer(AlertsReducer, initialState);
 
-//   const setAlert = (message, type) => {};
-//   return (
-//     <AlertsContext.Provider value={{}}>{props.childen}</AlertsContext.Provider>
-//   );
+  const setAlert = (type, message) => {
+    dispatch({
+      type: SET_ALERT,
+      payload: {
+        message,
+        type,
+      },
+    });
+
+    setTimeout(() => {
+      dispatch({
+        type: REMOVE_ALERT,
+      });
+    }, 5000);
+  };
+
+  return (
+    <AlertsContext.Provider
+      value={{
+        alert: state,
+        setAlert,
+      }}
+    >
+      {props.childen}
+    </AlertsContext.Provider>
+  );
+};
+
+export default AlertsState;

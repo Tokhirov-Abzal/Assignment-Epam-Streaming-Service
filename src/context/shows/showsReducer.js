@@ -3,6 +3,7 @@ import {
   SET_LOADING,
   SET_SINGLE_SHOW,
   CLEAR_SINGLE_SHOW,
+  SET_FAVOURITE,
 } from "../types";
 
 const showsReducer = (state, action) => {
@@ -17,6 +18,16 @@ const showsReducer = (state, action) => {
         ...state,
         shows: action.payload,
         loading: false,
+      };
+    case SET_SINGLE_SHOW:
+      return {
+        ...state,
+        favouriteShow: action.payload,
+        loading: false,
+      };
+    case CLEAR_SINGLE_SHOW:
+      return {
+        ...state,
       };
     default:
       return state;

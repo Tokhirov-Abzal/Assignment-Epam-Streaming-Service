@@ -5,7 +5,7 @@ $gray: #485461;
   margin: 20px 15px;
   padding: 10px 5px;
   width: 235px;
-  background-color: rgb(241, 236, 228);
+  background-color: rgb(253, 253, 253);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 6px;
   transition: transform 0.2s ease-in-out;
@@ -22,16 +22,88 @@ $gray: #485461;
     width: 212px;
     height: 295px;
     object-fit: cover;
-    border-radius: 6px;
     background-color: $gray;
   }
 }
 
 .listContent {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5px;
   padding: 0 10px;
+  height: 110px;
+}
+
+.listTite {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.listRating {
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .listButtons {
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infoBtn {
+  padding: 6px;
+  margin-right: 5px;
+  background-color: white;
+  color: $red;
+  border: 1px solid $red;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: inherit;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: $red;
+  }
+}
+
+.heartIconFavOn,
+.heartIconFavOff {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.heartIconFavOn {
+  color: $red;
+}
+
+.heartIconFavOff {
+  &:hover {
+    color: $red;
+  }
+}
+
+.green {
+  color: green;
+}
+
+.yellow {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
+
+.shareIcon {
+  margin-left: 15px;
+  font-size: 24px;
+  color: rgb(43, 42, 42);
+  cursor: pointer;
+  &:hover {
+    color: $red;
+  }
 }

@@ -14,6 +14,9 @@ const Navbar = () => {
         <Link className="linkItem" to="/about">
           <li>About</li>
         </Link>
+        <Link className="linkItem" to="/bookmark">
+          <li>Bookmark</li>
+        </Link>
         <button>Sign In</button>
       </ul>
     </div>
