@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link className="linkItem" to="/bookmark">
           <li>Bookmark</li>
         </Link>
-        <button>Sign In</button>
+        <button>Log in</button>
       </ul>
     </div>
   );

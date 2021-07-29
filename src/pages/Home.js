@@ -1,18 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 // Components
 import Searchbar from "../Components/Searchbar";
 import ListItem from "../Components/ListItem";
 // Context
 import ShowsContext from "../context/shows/showsContext";
+import HomeContext from "../context/home/homeContext";
 // Style
 import "./Home.scss";
 
 const Home = () => {
+  // Context
   const showsContext = useContext(ShowsContext);
-  const { loading, shows, favourite, getFavourite } = showsContext;
+  const { loading, shows } = showsContext;
+  const { favouriteList, setFavouriteList } = useContext(HomeContext);
 
-  console.log(shows);
+  // const [favouriteList, setFavouriteList] = useState([]);
+
+  // const onFavourite = (obj) => {
+  //   console.log(obj);
+  // };
   return (
     <div>
       <Searchbar />
@@ -27,6 +34,7 @@ const Home = () => {
         <div className="contentContainer">
           {shows.map((item) => (
             <ListItem
+              obj={item}
               key={item.show.id}
               name={item.show.name}
               image={
@@ -41,7 +49,9 @@ const Home = () => {
               }
               id={item.show.id}
               info={item.show.officialSite}
-              favourite={favourite}
+              // onFavourite={onFavourite}
+              favouriteList={favouriteList}
+              setFavouriteList={(obj) => setFavouriteList(obj)}
             />
           ))}
         </div>

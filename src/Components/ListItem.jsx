@@ -1,25 +1,32 @@
 import { Link } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
-import ShowsContext from "../context/shows/showsContext";
+import { useState } from "react";
+// import ShowsContext from "../context/shows/showsContext";
 
 // Style
 import "./ListItem.scss";
-import { SET_FAVOURITE } from "../context/types";
 
-const ListItem = ({ image, name, rating, id, info }) => {
+const ListItem = ({
+  image,
+  name,
+  rating,
+  id,
+  info,
+  onFavourite,
+  setFavouriteList,
+  favouriteList,
+  obj,
+}) => {
+  // States
+
   const [favourite, setFavourite] = useState(false);
-  // const [favouriteItems, setFavouriteItems] = useState([]);
-  const showsContext = useContext(ShowsContext);
-  const { loading, shows } = showsContext;
+  // Context
+  // const showsContext = useContext(ShowsContext);
+  // const { loading, shows } = showsContext;
 
-  // useEffect(() => {
-  //   const handleFavouriteClick = () => {
-  //     setFavourite(!favourite);
-  //     if (favourite === true) {
-  //       setFavouriteItems(shows);
-  //     }
-  //   };
-  // }, [favourite]);
+  const getFavourite = () => {
+    setFavouriteList((prev) => [...prev, obj]);
+    setFavourite(true);
+  };
 
   return (
     <div className="listItem">
@@ -30,7 +37,6 @@ const ListItem = ({ image, name, rating, id, info }) => {
         <div>
           <h2 className="listTite">{name}</h2>
           <h3 className="listRating">
-            Rating:{" "}
             <span
               className={rating > 7 ? "green" : rating > 4 ? " yellow" : "red"}
             >
@@ -44,11 +50,12 @@ const ListItem = ({ image, name, rating, id, info }) => {
               <button className="infoBtn">More Info</button>
             </Link>
           ) : (
-            <div></div>
+            <button className="infoBtn disabled">More Info</button>
           )}
 
           <div>
             <i
+              onClick={getFavourite}
               className={
                 favourite
                   ? "fas fa-heart heartIconFavOn"

@@ -70,6 +70,16 @@ $gray: #485461;
   }
 }
 
+.disabled {
+  border: 1px solid gray;
+  color: gray;
+
+  &:hover {
+    color: gray;
+    background-color: white;
+  }
+}
+
 .heartIconFavOn,
 .heartIconFavOff {
   font-size: 24px;

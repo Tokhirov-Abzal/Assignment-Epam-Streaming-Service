@@ -7,7 +7,6 @@ import {
   SET_LOADING,
   SET_SINGLE_SHOW,
   CLEAR_SINGLE_SHOW,
-  SET_FAVOURITE,
 } from "../types";
 
 const ShowsState = (props) => {
@@ -16,6 +15,7 @@ const ShowsState = (props) => {
     singleShow: {},
     loading: false,
     favourite: false,
+    id: null,
   };
 
   const [state, dispatch] = useReducer(ShowsReducer, initialState);
@@ -40,7 +40,6 @@ const ShowsState = (props) => {
       `https://api.tvmaze.com/search/shows/${id}`
     );
 
-    console.log(data);
     dispatch({
       type: SET_SINGLE_SHOW,
       payload: data,

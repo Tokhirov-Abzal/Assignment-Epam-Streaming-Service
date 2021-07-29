@@ -169,3 +169,37 @@ body {
   font-size: 1.5rem;
   color: rgb(253, 207, 0);
 }
+
+// About page
+
+.aboutPage {
+  display: flex;
+  margin: 110px 200px;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: rgba(white, 0.8);
+
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+
+  ul {
+    font-size: 25px;
+  }
+  li {
+    margin-right: 15px;
+    list-style: none;
+  }
+
+  p {
+    text-align: end;
+    margin-top: 30px;
+    font-size: 15px;
+  }
+}
